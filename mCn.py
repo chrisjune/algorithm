@@ -1,10 +1,13 @@
-# m C 2 ->?
-m = input()
-result = 0
+def pick(n, picked, topick):
+    if topick == 0:
+        print(picked)
+        return
+    small = 0 if not picked else picked[-1]+1
+    for next in range(small, n):
+        picked.append(next)
+        pick(n, picked, topick-1)
+        picked.pop()
 
-def sum(n):
-    if n == 1:
-        return 1
-    return n + sum(n-1)
 
-print(sum(m-1))
+pick(5, [], 3)
+
